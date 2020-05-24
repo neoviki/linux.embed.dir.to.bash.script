@@ -1,0 +1,2 @@
+1. if /tmp/archive.tar.gz already exist, the utility fails
+	[ Fix: file counter ]
