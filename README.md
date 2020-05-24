@@ -13,6 +13,12 @@ This linux/mac utility converts a directory to self extractable script.
    1. Just execute "./OUT.tar.sh"
    2. You will find directory (IN) in the current working directory.
 
+## Installation
+
+   1. Clone this repo and enter the repo directory
+   2. cd src
+   3. sudo ./install.sh #if you have root permission directly execute ./install.sh 
+
 ## Usage 
    
    $dir2sh <director_name - with full path> <output script name>
