@@ -1,4 +1,4 @@
-## dir2tarscript - Converts a directory to self extractable tar script [ tar.sh ]
+## dir2sh - Converts a directory to self extractable compressed script 
 
 This linux/mac utility converts a directory to self extractable script.
 
@@ -15,11 +15,11 @@ This linux/mac utility converts a directory to self extractable script.
 
 ## Usage 
    
-   $dir2tarscript <director_name - with full path> <output script name>
+   $dir2sh <director_name - with full path> <output script name>
 
 ## Example
    
-   $dir2tarscript /home/test test.tar.sh
+   $dir2sh /home/test test.tar.sh
 
 ## Use Case
 

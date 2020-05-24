@@ -1,5 +1,5 @@
 #! /bin/bash
-UTILITY_NAME="dir2tarscript"
+UTILITY_NAME="dir2sh"
 
 INSTALL_DIR="/usr/bin"
 

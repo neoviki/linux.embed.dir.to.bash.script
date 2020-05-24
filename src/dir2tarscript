@@ -8,12 +8,12 @@
 '
 
 if [ -z "$1" ]; then
-    echo "Usage: dir2tarscript <directory_name_with_full_path> <output_script_name>"
+    echo "Usage: dir2sh <directory_name_with_full_path> <output_script_name>"
     exit 1
 fi
 
 if [ -z "$2" ]; then
-    echo "Usage: dir2tarscript <directory_name_with_full_path> <output_script_name>"
+    echo "Usage: dir2sh <directory_name_with_full_path> <output_script_name>"
     exit 1
 fi
 
