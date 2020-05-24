@@ -1,0 +1,47 @@
+#! /bin/bash
+: '
+    Convert a directory to self extractable & transportable tar script { .tar.sh }
+  
+
+    				-->   [ Author ]  Viki (a) Vignesh Natarajan 
+				-->   [ Domain ]  https://vikiworks.io 
+'
+
+if [ -z "$1" ]; then
+    echo "Usage: dir2tarscript <directory_name_with_full_path> <output_script_name>"
+    exit 1
+fi
+
+if [ -z "$2" ]; then
+    echo "Usage: dir2tarscript <directory_name_with_full_path> <output_script_name>"
+    exit 1
+fi
+
+
+DIRECTORY_NAME=$1
+OUTPUT_SCRIPT_NAME=$2
+rm -rf $OUTPUT_SCRIPT_NAME
+INTERNAL_SCRIPT="./create_self_extracting_script.sh"
+INTERM_TAR_FILE="/tmp/archive.tar.gz"
+rm -rf $INTERM_TAR_FILE
+tar -zcvf $INTERM_TAR_FILE $DIRECTORY_NAME
+
+#print contents between "LINE_BEGIN & LINE_END" to $OUTPUT_SCRIPT_NAME
+cat <<LINE_END >> $OUTPUT_SCRIPT_NAME
+#LINE_BEGIN
+#!/bin/bash"
+PWD="\`pwd\`"
+THIS_SCRIPT="\$0"
+THIS_SCRIPT_WITH_PATH=\$PWD/\$THIS_SCRIPT
+TAR_FILE_START_LINE_NO=\`awk '/^__TAR_FILE_BEGIN__/ { print NR + 1; exit 0; }' \$THIS_SCRIPT\`
+echo "[ status ] Extracting Embedded Tar File"
+#tail <TAR_FILE_START_LINE_NO> to <END OF FILE> | < extract the piped input >
+tail -n +\$TAR_FILE_START_LINE_NO \$THIS_SCRIPT_WITH_PATH | tar -xz
+echo "[ status ] Extraction Completed"
+exit 0
+# CAURTION: Don't add any new line after "__TAR_FILE_BEGIN__"
+__TAR_FILE_BEGIN__
+LINE_END
+
+cat $INTERM_TAR_FILE >> $OUTPUT_SCRIPT_NAME
+chmod +x $OUTPUT_SCRIPT_NAME
