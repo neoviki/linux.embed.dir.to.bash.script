@@ -29,11 +29,13 @@ This linux/mac utility converts a directory to self extractable script.
    
    $dir2sh <director_name - with full path> <output script name>
 
-## Example1
+#### Example 1
    
    $dir2sh /home/test test.tar.sh
 
-## Example2
+   This command compress the directory (/home/test) to test.tar.sh
+
+#### Example 2
 
    $dir2sh "*" curr_dir.tar.sh
 
