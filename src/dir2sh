@@ -17,19 +17,59 @@ if [ -z "$2" ]; then
     exit 1
 fi
 
+if [ $# -gt 2 ]; then
+    echo "[ error ] argument count > 2"
+    echo "[ tips  ] if you use * as an argument, enclose it within double quotes \"*\""
+    exit 1
+fi
 
-DIRECTORY_NAME=$1
-OUTPUT_SCRIPT_NAME=$2
-rm -rf $OUTPUT_SCRIPT_NAME
-INTERNAL_SCRIPT="./create_self_extracting_script.sh"
-INTERM_TAR_FILE="/tmp/archive.tar.gz"
-rm -rf $INTERM_TAR_FILE
-tar -zcvf $INTERM_TAR_FILE $DIRECTORY_NAME
+DIRECTORY_NAME="$1"
+OUTPUT_SCRIPT_NAME="$2"
+
+
+if [ "$OUTPUT_SCRIPT_NAME" = "*" ]; then
+    echo "[ error ] * is not accepted as output script name"
+    exit 1
+fi
+
+
+if [ -f "$OUTPUT_SCRIPT_NAME" ]; then
+    #echo "$FILE exist"
+    rm -rf "$OUTPUT_SCRIPT_NAME"
+fi
+
+if [ $? -ne 0 ]; then
+    echo "Unable to delete old file : "$OUTPUT_SCRIPT_NAME
+    exit 1
+fi
+
+TAR_FILE="/tmp/archive.tar.gz"
+
+while [ 1 ]
+do
+    var=$((var+1))
+    INTERM_TAR_FILE="${TAR_FILE}_${var}"
+
+    if [ ! -f "$INTERM_TAR_FILE" ]; then
+    	#echo "$INTERM_TAR_FILE does not exist, we can use this file name for tar.gz"
+	break
+    fi 
+
+done
+
+if [ "$DIRECTORY_NAME" = "*" ]; then
+    echo "Compressing all files & folders inside current directory ( * )"
+    tar -zcvf $INTERM_TAR_FILE $DIRECTORY_NAME
+else
+    echo "Compressing directory : $DIRECTORY_NAME"
+    tar -zcvf $INTERM_TAR_FILE $DIRECTORY_NAME
+fi
+
+
 
 #print contents between "LINE_BEGIN & LINE_END" to $OUTPUT_SCRIPT_NAME
-cat <<LINE_END >> $OUTPUT_SCRIPT_NAME
-#LINE_BEGIN
-#!/bin/bash"
+cat <<LINE_END >> "$OUTPUT_SCRIPT_NAME"
+#!/bin/bash
 PWD="\`pwd\`"
 THIS_SCRIPT="\$0"
 THIS_SCRIPT_WITH_PATH=\$PWD/\$THIS_SCRIPT
@@ -43,5 +83,6 @@ exit 0
 __TAR_FILE_BEGIN__
 LINE_END
 
-cat $INTERM_TAR_FILE >> $OUTPUT_SCRIPT_NAME
+cat $INTERM_TAR_FILE >> "$OUTPUT_SCRIPT_NAME"
 chmod +x $OUTPUT_SCRIPT_NAME
+rm $INTERM_TAR_FILE
