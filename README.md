@@ -19,6 +19,12 @@ This linux/mac utility converts a directory to self extractable script.
    2. cd src
    3. sudo ./install.sh #if you have root permission directly execute ./install.sh 
 
+## Uninstall
+
+   1. Clone this repo and enter the repo directory
+   2. cd src
+   3. sudo ./uninstall.sh #if you have root permission directly execute ./uninstall.sh 
+
 ## Usage 
    
    $dir2sh <director_name - with full path> <output script name>
