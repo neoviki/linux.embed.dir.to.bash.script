@@ -1,47 +1,102 @@
-## dir2sh - Converts a directory to self extractable compressed script 
+# **linux.embed.dir.to.bash.script**  
 
-This linux/mac utility converts a directory to self extractable script.
+**Embed directory content into a bash script (stores directory content inside a shell script in a compressed format)**
 
-## How it works?
 
-   1. Given input directory ( IN  is converted to a tar.gz file ( IN.tar.gz ).
-   2. The tar.gz file (IN.tar.gz) is then embedded in to a bash script ( OUT.tar.sh ) with self extraction feature.
-   3. This self extractable tar script ( OUT.tar.sh ) can be transported to any linux computer/device and extracted. 
+This Linux/macOS utility embeds the contents of a directory into a shell script in a compressed format. The resulting script can be transferred to another system, and by simply executing it, the directory is recreated. This approach is particularly useful when a single executable file (such as an installer) needs to be transported, which contains both the data and the installation instructions in one file.
 
-## How to extract directory(IN) from the tar script (OUT.tar.sh)  
-   
-   1. Just execute "./OUT.tar.sh"
-   2. You will find directory (IN) in the current working directory.
+---
 
-## Installation
+## **How it Works**
 
-   1. Clone this repo and enter the repo directory
-   2. cd src
-   3. sudo ./install.sh #if you have root permission directly execute ./install.sh 
+1. The input directory (let's call it `IN`) is converted into a tar.gz file (`IN.tar.gz`).
+2. The tar.gz file (`IN.tar.gz`) is then embedded into a Bash script (`OUT.tar.sh`) with a self-extraction feature.
+3. The self-extractable tar script (`OUT.tar.sh`) can be transferred to any Linux/macOS computer/device, where it can be extracted.
 
-## Uninstall
+---
 
-   1. Clone this repo and enter the repo directory
-   2. cd src
-   3. sudo ./uninstall.sh #if you have root permission directly execute ./uninstall.sh 
+## **How to Extract the Directory (IN) from the Tar Script (OUT.tar.sh)**
 
-## Usage 
-   
-   $dir2sh <director_name - with full path> <output script name>
+1. Execute the following command:
 
-#### Example 1
-   
-   $dir2sh /home/test test.tar.sh
+   ```bash
+   ./OUT.tar.sh
+   ```
 
-   This command compress the directory (/home/test) to test.tar.sh
+2. The directory (`IN`) will be extracted in the current working directory.
 
-#### Example 2
+---
 
-   $dir2sh "*" curr_dir.tar.sh
+## **Installation**
 
-   This command compress all contents of current directory to curr_dir.tar.sh
-   
-## Use Case
+1. Clone the repository and navigate to the repo directory:
 
-This utility is useful to transport directory as a self extractable package/script between linux/mac systems.
+   ```bash
+   git clone <repo_url>
+   cd <repo_directory>
+   ```
 
+2. Navigate to the `src` directory:
+
+   ```bash
+   cd src
+   ```
+
+3. Run the installation script:
+
+   ```bash
+   sudo ./install.sh  # If you have root permissions, you can execute ./install.sh directly.
+   ```
+
+---
+
+## **Uninstallation**
+
+1. Clone the repository and navigate to the repo directory:
+
+   ```bash
+   git clone <repo_url>
+   cd <repo_directory>
+   ```
+
+2. Navigate to the `src` directory:
+
+   ```bash
+   cd src
+   ```
+
+3. Run the uninstall script:
+
+   ```bash
+   sudo ./uninstall.sh  # If you have root permissions, you can execute ./uninstall.sh directly.
+   ```
+
+---
+
+## **Usage**
+
+```bash
+$ dir2sh <directory_name> <output_script_name>
+```
+
+### **Example 1**
+
+```bash
+$ dir2sh /home/test test.tar.sh
+```
+
+This command compresses the directory `/home/test` into `test.tar.sh`.
+
+### **Example 2**
+
+```bash
+$ dir2sh "*" curr_dir.tar.sh
+```
+
+This command compresses all contents of the current directory into `curr_dir.tar.sh`.
+
+---
+
+## **Use Case**
+
+This utility is ideal for transporting directories as a self-extractable package/script between Linux/macOS systems. It is especially useful for scenarios where you need to distribute a single executable file (like an installer) that contains both the data and the instructions for installation, allowing the user to extract and install the directory with just one command.
