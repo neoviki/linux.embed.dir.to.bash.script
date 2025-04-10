@@ -29,47 +29,17 @@ This Linux/macOS utility embeds the contents of a directory into a shell script 
 
 ## **Installation**
 
-1. Clone the repository and navigate to the repo directory:
-
-   ```bash
-   git clone <repo_url>
-   cd <repo_directory>
-   ```
-
-2. Navigate to the `src` directory:
-
-   ```bash
-   cd src
-   ```
-
-3. Run the installation script:
-
-   ```bash
-   sudo ./install.sh  # If you have root permissions, you can execute ./install.sh directly.
-   ```
+```bash
+sudo ./install.sh  # If you have root permissions, you can execute ./install.sh directly.
+```
 
 ---
 
 ## **Uninstallation**
 
-1. Clone the repository and navigate to the repo directory:
-
-   ```bash
-   git clone <repo_url>
-   cd <repo_directory>
-   ```
-
-2. Navigate to the `src` directory:
-
-   ```bash
-   cd src
-   ```
-
-3. Run the uninstall script:
-
-   ```bash
-   sudo ./uninstall.sh  # If you have root permissions, you can execute ./uninstall.sh directly.
-   ```
+```bash
+sudo ./uninstall.sh  # If you have root permissions, you can execute ./uninstall.sh directly.
+```
 
 ---
 

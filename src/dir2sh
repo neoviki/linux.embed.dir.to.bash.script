@@ -1,11 +1,13 @@
 #! /bin/bash
-: '
-    Convert a directory to self extractable & transportable tar script { .tar.sh }
-  
 
-    				-->   [ Author ]  Viki (a) Vignesh Natarajan 
-				-->   [ Domain ]  https://vikiworks.io 
-'
+#------------------------------------------------------------------#
+# UTILITY DETAILS | Convert a directory to self extractable and    #
+#                 | transportable tar script (.tar.sh)             #
+#------------------------------------------------------------------#
+#          AUTHOR | VIKI (A) V NATARAJAN                           #
+#------------------------------------------------------------------#
+#         CONTACT | WWW.VIKI.DESIGN                                #
+#------------------------------------------------------------------#
 
 if [ -z "$1" ]; then
     echo "Usage: dir2sh <directory_name_with_full_path> <output_script_name>"

@@ -21,19 +21,27 @@ get_installation_directory(){
 
 install_util(){
     chmod +x ./$UTILITY_NAME
-    #check sudo 
+    #check sudo
     cp ./$UTILITY_NAME $INSTALL_DIR
 }
 
+uninstall_util(){
+    #check sudo
+    rm -rf $INSTALL_DIR/$UTILITY_NAME
+}
+
+
 check_installation_status(){
     if [ $1 -eq 0 ]; then
-        echo "[ success ] $UTILITY_NAME installation is successful"
+        echo "[ success ] $UTILITY_NAME uninstall successful"
     else
-        echo "[ failure ] $UTILITY_NAME installation failed, You should have sudo or root access to install this package"
+        echo "[ failure ] $UTILITY_NAME uninstall failed"
+	echo "	-> [ case 1 ] You should have sudo or root access to uninstall this package"
+        echo "	-> [ case 2 ] $UTILITY_NAME may not be installed"
     fi
 }
 
 get_installation_directory
-install_util
+uninstall_util
 check_installation_status $?
 
